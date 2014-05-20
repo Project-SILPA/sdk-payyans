@@ -112,8 +112,8 @@ public class Payyans {
                     line = new String((br.readLine().getBytes("UTF-8")), "UTF-8");
                     line = line.trim();
                     lineNumber = lineNumber + 1;
-                } catch (UnsupportedEncodingException e) {
-                    Log.e(LOG_TAG, "Encoding of given argument not supported." +
+                } catch (Exception e) {
+                    Log.e(LOG_TAG, "Error : " + e.getMessage() + " " +
                             " Loading rules terminated");
                     br.close();
                     break;
@@ -277,7 +277,7 @@ public class Payyans {
     }
 
     /**
-     * This
+     * getVowelSign
      *
      * @param vowelLetter
      * @param vowelSignLetter

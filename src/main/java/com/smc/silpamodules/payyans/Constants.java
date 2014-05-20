@@ -14,12 +14,13 @@ public class Constants {
     public static final int FONT_MAP_INDULEKHA = 3;
     public static final int FONT_MAP_KARTHIKA = 4;
     public static final int FONT_MAP_MANORAMA = 5;
-    public static final int FONT_MAP_NANDINI = 6;
-    public static final int FONT_MAP_PANCHARI = 7;
-    public static final int FONT_MAP_REVATHI = 8;
-    public static final int FONT_MAP_TEMPLATE = 9;
-    public static final int FONT_MAP_UMA = 10;
-    public static final int FONT_MAP_VALLUVAR = 11;
+    public static final int FONT_MAP_MATWEB = 6;
+    public static final int FONT_MAP_NANDINI = 7;
+    public static final int FONT_MAP_PANCHARI = 8;
+    public static final int FONT_MAP_REVATHI = 9;
+    public static final int FONT_MAP_TEMPLATE = 10;
+    public static final int FONT_MAP_UMA = 11;
+    public static final int FONT_MAP_VALLUVAR = 12;
 
     public static final String[] FONT_MAPS = {"maps/ambili.map", "maps/charaka.map",
             "maps/haritha.map", "maps/indulekha.map", "maps/karthika.map",
