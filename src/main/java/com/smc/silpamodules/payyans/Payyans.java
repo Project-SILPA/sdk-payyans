@@ -19,21 +19,64 @@ public class Payyans {
     private static final int DEFAULT_FONT_MAP = Constants.FONT_MAP_AMBILI;
     private static final int DEFAULT_DIRECTION = Constants.ASCII_TO_UNICODE;
 
+    /**
+     * Context of application
+     */
     private Context mContext;
+
+    /**
+     * Direction of conversion.
+     * Unicode to ASCII or
+     * ASCII to Unicode
+     */
     private int mDirection;
+
+    /**
+     * Font map rules
+     */
     private int mFontMap;
+
+    /**
+     * Font map path
+     */
     private String mMappingFileName;
+
+    /**
+     * Map to store all rules
+     */
     private Map<String, String> mRulesDict;
 
 
+    /**
+     * Constructor
+     * Default font map - ambili
+     * Default direction - ASCII to Unicode
+     *
+     * @param context context
+     */
     public Payyans(Context context) {
         this(context, DEFAULT_FONT_MAP, DEFAULT_DIRECTION);
     }
 
+    /**
+     * Constructor
+     * Default direction - ASCII to Unicode
+     *
+     * @param context context
+     * @param fontMap font map rules from Constants
+     */
     public Payyans(Context context, int fontMap) {
         this(context, fontMap, DEFAULT_DIRECTION);
     }
 
+    /**
+     * Constructor
+     *
+     * @param context   context
+     * @param fontMap   font map rules from Constants
+     * @param direction Unicode to ASCII or ASCII to Unicode
+     *                  Constants
+     */
     public Payyans(Context context, int fontMap, int direction) {
         this.mDirection = direction;
         this.mContext = context;
@@ -43,10 +86,17 @@ public class Payyans {
         init();
     }
 
+    /**
+     * This function is used to load rules on object creation
+     */
     private void init() {
         loadRules();
     }
 
+    /**
+     * This function is used to load mapping rules from respective
+     * font maps
+     */
     private void loadRules() {
 
         String line;
@@ -63,7 +113,8 @@ public class Payyans {
                     line = line.trim();
                     lineNumber = lineNumber + 1;
                 } catch (UnsupportedEncodingException e) {
-                    Log.e(LOG_TAG, "Encoding of given argument not supported.");
+                    Log.e(LOG_TAG, "Encoding of given argument not supported." +
+                            " Loading rules terminated");
                     br.close();
                     break;
                 }
@@ -105,34 +156,227 @@ public class Payyans {
         }
     }
 
-    private String ASCII2UNICODE(String text) {
+    /**
+     * This function converts ASCII text to Unicode
+     *
+     * @param asciiText ASCII text to be converted
+     * @return converted Unicode text
+     * @throws UnsupportedEncodingException
+     */
+    private String ASCII2UNICODE(String asciiText) throws UnsupportedEncodingException {
 
+        asciiText = new String((asciiText.getBytes("UTF-8")), "UTF-8");
+
+        int index = 0;
+        int postIndex = 0;
+        String prebaseLetter = "";
+        String postbaseLetter = "";
+        String unicodeText = "";
+        String nextUcodeLetter = "";
+        String unicodeLetter = "";
+
+        while (index < asciiText.length()) {
+            for (int charNo = 3; charNo >= 1; charNo--) {
+                if (index + charNo > asciiText.length()) continue;
+                String letter = asciiText.substring(index, index + charNo);
+                if (this.mRulesDict.containsKey(letter)) {
+                    unicodeLetter = this.mRulesDict.get(letter);
+                    if (this.isPrebase(unicodeLetter)) {
+                        prebaseLetter = unicodeLetter;
+                    } else {
+                        postIndex = index + charNo;
+                        if (postIndex < asciiText.length()) {
+                            letter = asciiText.charAt(postIndex) + "";
+                            if (this.mRulesDict.containsKey(letter)) {
+                                nextUcodeLetter = this.mRulesDict.get(letter);
+                                if (this.isPostbase(nextUcodeLetter)) {
+                                    postbaseLetter = nextUcodeLetter;
+                                    index = index + 1;
+                                }
+                            }
+                        }
+                        if ((new String((unicodeLetter.getBytes("UTF-8")), "UTF-8")).equals("എ")
+                                || (new String((unicodeLetter.getBytes("UTF-8")), "UTF-8"))
+                                .equals("ഒ")) {
+                            unicodeText = unicodeText + postbaseLetter +
+                                    this.getVowelSign(prebaseLetter, unicodeLetter);
+                        } else {
+                            unicodeText = unicodeText + unicodeLetter + postbaseLetter +
+                                    prebaseLetter;
+                        }
+                        prebaseLetter = "";
+                        postbaseLetter = "";
+                    }
+                    index = index + charNo;
+                    break;
+                } else {
+                    if (charNo == 1) {
+                        unicodeText = unicodeText + letter;
+                        index = index + 1;
+                        break;
+                    }
+                    unicodeLetter = letter;
+                }
+            }
+        }
+        return unicodeText;
     }
 
-    private String Unicode2ASCII(String text) {
+    /**
+     * This function converts Unicode text to ASCII
+     *
+     * @param unicodeText Unicode text to be converted
+     * @return converted ASCII text
+     * @throws UnsupportedEncodingException
+     */
+    private String Unicode2ASCII(String unicodeText) throws UnsupportedEncodingException {
 
+        unicodeText = new String((unicodeText.getBytes("UTF-8")), "UTF-8");
+
+        int index = 0;
+        String asciiText = "";
+        String asciiLetter = "";
+
+        while (index < unicodeText.length()) {
+            for (int charNo = 3; charNo >= 1; charNo--) {
+                if (index + charNo > unicodeText.length()) continue;
+                String letter = unicodeText.substring(index, index + charNo);
+                if (this.mRulesDict.containsKey(letter)) {
+                    asciiLetter = this.mRulesDict.get(letter);
+                    letter = new String((letter.getBytes("UTF-8")), "UTF-8");
+
+                    if (letter.equals("ൈ")) {
+                        int len = asciiText.length();
+                        asciiText = asciiText.substring(0, len - 1) + asciiLetter
+                                + asciiText.substring(len - 1, len);
+                    } else if (letter.equals("ോ") || letter.equals("ൊ") || letter.equals("ൌ")) {
+                        int len = asciiText.length();
+                        asciiText = asciiText.substring(0, len - 1)
+                                + asciiLetter.charAt(0) + asciiText.substring(len - 1, len)
+                                + asciiLetter.charAt(1);
+                    } else if (letter.equals("െ") || letter.equals("േ") || letter.equals("്ര")) {
+                        int len = asciiText.length();
+                        asciiText = asciiText.substring(0, len - 1) + asciiLetter
+                                + asciiText.substring(len - 1, len);
+                    } else {
+                        asciiText = asciiText + asciiLetter;
+                    }
+                    index = index + charNo;
+                    break;
+                } else {
+                    if (charNo == 1) {
+                        index = index + 1;
+                        asciiText = asciiText + letter;
+                        break;
+                    }
+                    asciiLetter = letter;
+                }
+            }
+        }
+        return asciiText;
     }
 
+    /**
+     * This
+     *
+     * @param vowelLetter
+     * @param vowelSignLetter
+     * @return string
+     * @throws UnsupportedEncodingException
+     */
+    public String getVowelSign(String vowelLetter, String vowelSignLetter)
+            throws UnsupportedEncodingException {
+
+        String vowel = new String((vowelLetter.getBytes("UTF-8")), "UTF-8");
+        String vowelSign = new String((vowelSignLetter.getBytes("UTF-8")), "UTF-8");
+
+        if (vowel.equals("എ")) {
+            if (vowelSign.equals("െ")) {
+                return "ഐ";
+            }
+        }
+        if (vowel.equals("ഒ")) {
+            if (vowelSign.equals("ാ")) {
+                return "ഓ";
+            }
+            if (vowelSign.equals("ൗ")) {
+                return "ഔ";
+            }
+        }
+        return (vowelLetter + vowelSignLetter);
+    }
+
+    /**
+     * Checks if a post base character
+     *
+     * @param letter single character string to be checked
+     * @return true if post base character else false
+     * @throws UnsupportedEncodingException
+     */
+    public boolean isPostbase(String letter) throws UnsupportedEncodingException {
+        letter = new String((letter.getBytes("UTF-8")), "UTF-8");
+        if (letter.equals("്യ") || letter.equals("്വ")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks if a pre base character
+     *
+     * @param letter single character string to be checked
+     * @return true if pre base character else false
+     * @throws UnsupportedEncodingException
+     */
+    public boolean isPrebase(String letter) throws UnsupportedEncodingException {
+        letter = new String((letter.getBytes("UTF-8")), "UTF-8");
+        if (letter.equals("േ") || letter.equals("ൈ") || letter.equals("ൊ") ||
+                letter.equals("ോ") || letter.equals("ൌ") || letter.equals("്ര")
+                || letter.equals("െ")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * This function converts Ascii to Unicode and vice-versa
+     * depending on direction of conversion specified.
+     *
+     * @param text string to be converted
+     * @return converted string
+     */
     public String getConvertString(String text) {
-
         try {
             text = new String((text.getBytes("UTF-8")), "UTF-8");
+
+            if (this.mDirection == Constants.ASCII_TO_UNICODE) {
+                return ASCII2UNICODE(text);
+            } else {
+                return Unicode2ASCII(text);
+            }
+
         } catch (UnsupportedEncodingException e) {
             Log.e(LOG_TAG, "Encoding of given argument not supported. null returned");
             return null;
         }
-
-        if (this.mDirection == Constants.ASCII_TO_UNICODE) {
-            return ASCII2UNICODE(text);
-        } else {
-            return Unicode2ASCII(text);
-        }
     }
 
+    /**
+     * This function gives name of the module
+     *
+     * @return name of module
+     */
     public String getModuleName() {
         return Constants.PAYYANS_MODULE_NAME;
     }
 
+    /**
+     * This function gives a brief description of the module
+     *
+     * @return brief information regarding the module
+     */
     public String getModuleInformation() {
         return Constants.PAYYANS_MODULE_INFORMATION;
     }
