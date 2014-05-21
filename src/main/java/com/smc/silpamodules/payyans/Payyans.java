@@ -347,7 +347,7 @@ public class Payyans {
      * @param text string to be converted
      * @return converted string
      */
-    public String getConvertString(String text) {
+    public String getConvertText(String text) {
         try {
             text = new String((text.getBytes("UTF-8")), "UTF-8");
 
