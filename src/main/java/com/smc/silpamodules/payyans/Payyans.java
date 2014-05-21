@@ -113,6 +113,26 @@ public class Payyans {
         init();
     }
 
+    public void setFontMap(int fontMap) {
+        this.mFontMap = fontMap;
+        this.mMappingFileName = Payyans.FONT_MAPS[this.mFontMap];
+        this.mRulesDict = new HashMap<String, String>();
+        init();
+    }
+
+    /**
+     * This function is used to explicitly set direction of conversion
+     * Payyans.ASCII_TO_UNICODE to convert from ASCII to Unicode
+     * Payyans.UNICODE_TO_ASCII to convert from Unicode to ASCII
+     *
+     * @param direction direction of conversion
+     */
+    public void setDirection(int direction) {
+        this.mDirection = direction;
+        this.mRulesDict = new HashMap<String, String>();
+        init();
+    }
+
     /**
      * This function is used to load rules on object creation
      */
