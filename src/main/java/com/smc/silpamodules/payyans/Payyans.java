@@ -113,6 +113,12 @@ public class Payyans {
         init();
     }
 
+    /**
+     * This function is used to explicitly set font map
+     * *
+     *
+     * @param fontMap fontmap
+     */
     public void setFontMap(int fontMap) {
         this.mFontMap = fontMap;
         this.mMappingFileName = Payyans.FONT_MAPS[this.mFontMap];
