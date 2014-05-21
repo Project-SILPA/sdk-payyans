@@ -15,9 +15,36 @@ import java.util.Map;
  */
 public class Payyans {
 
-    private static final String LOG_TAG = "Payyans";
-    private static final int DEFAULT_FONT_MAP = Constants.FONT_MAP_AMBILI;
-    private static final int DEFAULT_DIRECTION = Constants.ASCII_TO_UNICODE;
+    public static final int ASCII_TO_UNICODE = 0;
+    public static final int UNICODE_TO_ASCII = 1;
+
+    public static final int FONT_MAP_AMBILI = 0;
+    public static final int FONT_MAP_CHARAKA = 1;
+    public static final int FONT_MAP_HARITHA = 2;
+    public static final int FONT_MAP_INDULEKHA = 3;
+    public static final int FONT_MAP_KARTHIKA = 4;
+    public static final int FONT_MAP_MANORAMA = 5;
+    public static final int FONT_MAP_MATWEB = 6;
+    public static final int FONT_MAP_NANDINI = 7;
+    public static final int FONT_MAP_PANCHARI = 8;
+    public static final int FONT_MAP_REVATHI = 9;
+    public static final int FONT_MAP_TEMPLATE = 10;
+    public static final int FONT_MAP_UMA = 11;
+    public static final int FONT_MAP_VALLUVAR = 12;
+
+    public static final String PAYYANS_MODULE_NAME = "Payyans";
+    public static final String PAYYANS_MODULE_INFORMATION = "ASCII data - Unicode Convertor based on font maps";
+
+    private static final String[] FONT_MAPS = {"maps/ambili.map", "maps/charaka.map",
+            "maps/haritha.map", "maps/indulekha.map", "maps/karthika.map",
+            "maps/manorama.map", "maps/matweb.map", "maps/nandini.map",
+            "maps/panchari.map", "maps/revathi.map", "maps/template.map",
+            "maps/uma.map", "maps/valluvar.map"};
+
+    private static final int DEFAULT_FONT_MAP = Payyans.FONT_MAP_AMBILI;
+    private static final int DEFAULT_DIRECTION = Payyans.ASCII_TO_UNICODE;
+
+    private static final String LOG_TAG = PAYYANS_MODULE_NAME;
 
     /**
      * Context of application
@@ -81,7 +108,7 @@ public class Payyans {
         this.mDirection = direction;
         this.mContext = context;
         this.mFontMap = fontMap;
-        this.mMappingFileName = Constants.FONT_MAPS[this.mFontMap];
+        this.mMappingFileName = Payyans.FONT_MAPS[this.mFontMap];
         this.mRulesDict = new HashMap<String, String>();
         init();
     }
@@ -143,7 +170,7 @@ public class Payyans {
                 lhs = lhs.trim();
                 rhs = rhs.trim();
 
-                if (this.mDirection == Constants.ASCII_TO_UNICODE) {
+                if (this.mDirection == Payyans.ASCII_TO_UNICODE) {
                     this.mRulesDict.put(lhs, rhs);
                 } else {
                     this.mRulesDict.put(rhs, lhs);
@@ -351,7 +378,7 @@ public class Payyans {
         try {
             text = new String((text.getBytes("UTF-8")), "UTF-8");
 
-            if (this.mDirection == Constants.ASCII_TO_UNICODE) {
+            if (this.mDirection == Payyans.ASCII_TO_UNICODE) {
                 return ASCII2UNICODE(text);
             } else {
                 return Unicode2ASCII(text);
@@ -369,7 +396,7 @@ public class Payyans {
      * @return name of module
      */
     public String getModuleName() {
-        return Constants.PAYYANS_MODULE_NAME;
+        return Payyans.PAYYANS_MODULE_NAME;
     }
 
     /**
@@ -378,6 +405,6 @@ public class Payyans {
      * @return brief information regarding the module
      */
     public String getModuleInformation() {
-        return Constants.PAYYANS_MODULE_INFORMATION;
+        return Payyans.PAYYANS_MODULE_INFORMATION;
     }
 }
