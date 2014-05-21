@@ -3,7 +3,6 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.smc.silpamodules.payyans.Constants;
 import com.smc.silpamodules.payyans.Payyans;
 
 import java.io.UnsupportedEncodingException;
@@ -28,86 +27,86 @@ public class TestPayyans extends AndroidTestCase {
         assertNotNull(obj);
 
 
-        obj = new Payyans(getContext(), Constants.FONT_MAP_AMBILI);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_AMBILI);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_CHARAKA);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_CHARAKA);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_HARITHA);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_HARITHA);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_INDULEKHA);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_INDULEKHA);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_KARTHIKA);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_KARTHIKA);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_MANORAMA);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_MANORAMA);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_MATWEB);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_MATWEB);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_NANDINI);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_NANDINI);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_PANCHARI);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_PANCHARI);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_REVATHI);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_REVATHI);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_TEMPLATE);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_TEMPLATE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_UMA);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_UMA);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_VALLUVAR);
-        assertNotNull(obj);
-
-
-        obj = new Payyans(getContext(), Constants.FONT_MAP_AMBILI, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_CHARAKA, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_HARITHA, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_INDULEKHA, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_KARTHIKA, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_MANORAMA, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_MATWEB, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_NANDINI, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_PANCHARI, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_REVATHI, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_TEMPLATE, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_UMA, Constants.ASCII_TO_UNICODE);
-        assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_VALLUVAR, Constants.ASCII_TO_UNICODE);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_VALLUVAR);
         assertNotNull(obj);
 
-        obj = new Payyans(getContext(), Constants.FONT_MAP_AMBILI, Constants.UNICODE_TO_ASCII);
+
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_AMBILI, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_CHARAKA, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_CHARAKA, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_HARITHA, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_HARITHA, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_INDULEKHA, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_INDULEKHA, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_KARTHIKA, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_KARTHIKA, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_MANORAMA, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_MANORAMA, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_MATWEB, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_MATWEB, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_NANDINI, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_NANDINI, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_PANCHARI, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_PANCHARI, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_REVATHI, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_REVATHI, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_TEMPLATE, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_TEMPLATE, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_UMA, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_UMA, Payyans.ASCII_TO_UNICODE);
         assertNotNull(obj);
-        obj = new Payyans(getContext(), Constants.FONT_MAP_VALLUVAR, Constants.UNICODE_TO_ASCII);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_VALLUVAR, Payyans.ASCII_TO_UNICODE);
+        assertNotNull(obj);
+
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_AMBILI, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_CHARAKA, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_HARITHA, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_INDULEKHA, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_KARTHIKA, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_MANORAMA, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_MATWEB, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_NANDINI, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_PANCHARI, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_REVATHI, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_TEMPLATE, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_UMA, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_VALLUVAR, Payyans.UNICODE_TO_ASCII);
         assertNotNull(obj);
     }
 
@@ -142,10 +141,28 @@ public class TestPayyans extends AndroidTestCase {
     @SmallTest
     @MediumTest
     @LargeTest
+    public void testGetConvertedText() {
+        Payyans obj = new Payyans(getContext(), Payyans.FONT_MAP_AMBILI, Payyans.ASCII_TO_UNICODE);
+        assertNotNull(obj);
+        assertEquals("വലഹഹീ", obj.getConvertText("hello"));
+        assertEquals("ഠവല ൂൗശരസ യൃീംി ളീഃ ഷൗാു ീെ്‌ലൃ വേല ഹമ്വ്യ റീഴ", obj.getConvertText("The quick brown fox jumps over the lazy dog"));
+
+        obj = null;
+
+        obj = new Payyans(getContext(), Payyans.FONT_MAP_AMBILI, Payyans.UNICODE_TO_ASCII);
+        assertNotNull(obj);
+        assertEquals("hello", obj.getConvertText("വലഹഹീ"));
+        assertEquals("The quick brown fox jump sover the lazy dog", obj.getConvertText("ഠവല ൂൗശരസ യൃീംി ളീഃ ഷൗാു ീെ്‌ലൃ വേല ഹമ്വ്യ റീഴ"));
+
+    }
+
+    @SmallTest
+    @MediumTest
+    @LargeTest
     public void testGetModuleName() {
         Payyans obj = new Payyans(getContext());
         assertNotNull(obj);
-        assertEquals(Constants.PAYYANS_MODULE_NAME, obj.getModuleName());
+        assertEquals(Payyans.PAYYANS_MODULE_NAME, obj.getModuleName());
     }
 
     @SmallTest
@@ -154,7 +171,7 @@ public class TestPayyans extends AndroidTestCase {
     public void testGetModuleInformation() {
         Payyans obj = new Payyans(getContext());
         assertNotNull(obj);
-        assertEquals(Constants.PAYYANS_MODULE_INFORMATION, obj.getModuleInformation());
+        assertEquals(Payyans.PAYYANS_MODULE_INFORMATION, obj.getModuleInformation());
     }
 
     @Override
