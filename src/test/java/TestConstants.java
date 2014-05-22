@@ -3,7 +3,7 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import com.smc.silpamodules.payyans.Payyans;
+import org.smc.silpamodules.payyans.Payyans;
 
 /**
  * Created by sujith on 20/5/14.
