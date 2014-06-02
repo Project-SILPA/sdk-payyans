@@ -32,8 +32,8 @@ public class Payyans {
     public static final int FONT_MAP_UMA = 11;
     public static final int FONT_MAP_VALLUVAR = 12;
 
-    public static final String PAYYANS_MODULE_NAME = "Payyans";
-    public static final String PAYYANS_MODULE_INFORMATION = "ASCII data - Unicode Convertor based on font maps";
+    public static final String MODULE_NAME = "Payyans";
+    public static final String MODULE_INFORMATION = "ASCII data - Unicode Convertor based on font maps";
 
     private static final String[] FONT_MAPS = {"maps/ambili.map", "maps/charaka.map",
             "maps/haritha.map", "maps/indulekha.map", "maps/karthika.map",
@@ -44,7 +44,7 @@ public class Payyans {
     private static final int DEFAULT_FONT_MAP = Payyans.FONT_MAP_AMBILI;
     private static final int DEFAULT_DIRECTION = Payyans.ASCII_TO_UNICODE;
 
-    private static final String LOG_TAG = PAYYANS_MODULE_NAME;
+    private static final String LOG_TAG = MODULE_NAME;
 
     /**
      * Context of application
@@ -422,7 +422,7 @@ public class Payyans {
      * @return name of module
      */
     public String getModuleName() {
-        return Payyans.PAYYANS_MODULE_NAME;
+        return Payyans.MODULE_NAME;
     }
 
     /**
@@ -431,6 +431,6 @@ public class Payyans {
      * @return brief information regarding the module
      */
     public String getModuleInformation() {
-        return Payyans.PAYYANS_MODULE_INFORMATION;
+        return Payyans.MODULE_INFORMATION;
     }
 }

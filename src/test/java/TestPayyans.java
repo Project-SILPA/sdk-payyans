@@ -162,7 +162,7 @@ public class TestPayyans extends AndroidTestCase {
     public void testGetModuleName() {
         Payyans obj = new Payyans(getContext());
         assertNotNull(obj);
-        assertEquals(Payyans.PAYYANS_MODULE_NAME, obj.getModuleName());
+        assertEquals(Payyans.MODULE_NAME, obj.getModuleName());
     }
 
     @SmallTest
@@ -171,7 +171,7 @@ public class TestPayyans extends AndroidTestCase {
     public void testGetModuleInformation() {
         Payyans obj = new Payyans(getContext());
         assertNotNull(obj);
-        assertEquals(Payyans.PAYYANS_MODULE_INFORMATION, obj.getModuleInformation());
+        assertEquals(Payyans.MODULE_INFORMATION, obj.getModuleInformation());
     }
 
     @Override
