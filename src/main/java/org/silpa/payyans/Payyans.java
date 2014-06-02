@@ -1,4 +1,4 @@
-package org.smc.silpamodules.payyans;
+package org.silpa.payyans;
 
 import android.content.Context;
 import android.util.Log;
