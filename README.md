@@ -1,7 +1,7 @@
 Payyans
 =======
 
-Travis master: [![Build Status](https://travis-ci.org/SujithVadakkepat/sdk-payyans.svg?branch=master)](https://travis-ci.org/SujithVadakkepat/sdk-payyans)
+Travis master: [![Build Status](https://travis-ci.org/Project-SILPA/sdk-payyans.svg)](https://travis-ci.org/Project-SILPA/sdk-payyans)
 
 SILPA - ASCII data - Unicode Convertor based on font maps
 
