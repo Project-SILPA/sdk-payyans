@@ -35,11 +35,11 @@ public class Payyans {
     public static final String MODULE_NAME = "Payyans";
     public static final String MODULE_INFORMATION = "ASCII data - Unicode Convertor based on font maps";
 
-    private static final String[] FONT_MAPS = {"maps/ambili.map", "maps/charaka.map",
-            "maps/haritha.map", "maps/indulekha.map", "maps/karthika.map",
-            "maps/manorama.map", "maps/matweb.map", "maps/nandini.map",
-            "maps/panchari.map", "maps/revathi.map", "maps/template.map",
-            "maps/uma.map", "maps/valluvar.map"};
+    private static final int[] FONT_MAPS_RESOURCE_RAW_ID = {R.raw.silpa_sdk_ambili,
+            R.raw.silpa_sdk_charaka, R.raw.silpa_sdk_haritha, R.raw.silpa_sdk_indulekha,
+            R.raw.silpa_sdk_karthika, R.raw.silpa_sdk_manorama, R.raw.silpa_sdk_matweb,
+            R.raw.silpa_sdk_nandini, R.raw.silpa_sdk_panchari, R.raw.silpa_sdk_revathi,
+            R.raw.silpa_sdk_template, R.raw.silpa_sdk_uma, R.raw.silpa_sdk_valluvar};
 
     private static final int DEFAULT_FONT_MAP = Payyans.FONT_MAP_AMBILI;
     private static final int DEFAULT_DIRECTION = Payyans.ASCII_TO_UNICODE;
@@ -64,9 +64,9 @@ public class Payyans {
     private int mFontMap;
 
     /**
-     * Font map path
+     * Font map res id
      */
-    private String mMappingFileName;
+    private int mMappingFontRawResourceId;
 
     /**
      * Map to store all rules
@@ -108,7 +108,7 @@ public class Payyans {
         this.mDirection = direction;
         this.mContext = context;
         this.mFontMap = fontMap;
-        this.mMappingFileName = Payyans.FONT_MAPS[this.mFontMap];
+        this.mMappingFontRawResourceId = Payyans.FONT_MAPS_RESOURCE_RAW_ID[this.mFontMap];
         this.mRulesDict = new HashMap<String, String>();
         init();
     }
@@ -121,7 +121,7 @@ public class Payyans {
      */
     public void setFontMap(int fontMap) {
         this.mFontMap = fontMap;
-        this.mMappingFileName = Payyans.FONT_MAPS[this.mFontMap];
+        this.mMappingFontRawResourceId = Payyans.FONT_MAPS_RESOURCE_RAW_ID[this.mFontMap];
         this.mRulesDict = new HashMap<String, String>();
         init();
     }
@@ -157,8 +157,7 @@ public class Payyans {
         int lineNumber = 0;
 
         try {
-            br = new BufferedReader(new InputStreamReader(this.mContext.getResources().
-                    getAssets().open(mMappingFileName)));
+            br = new BufferedReader(new InputStreamReader(this.mContext.getResources().openRawResource(mMappingFontRawResourceId)));
 
             while (true) {
                 try {
@@ -343,20 +342,18 @@ public class Payyans {
         String vowel = new String((vowelLetter.getBytes("UTF-8")), "UTF-8");
         String vowelSign = new String((vowelSignLetter.getBytes("UTF-8")), "UTF-8");
 
-        if (vowel.equals("എ")) {
-            if (vowelSign.equals("െ")) {
-                return "ഐ";
-            }
+        String strVowelSign;
+
+        if (vowel.equals("എ") && vowelSign.equals("െ")) {
+            strVowelSign = "ഐ";
+        } else if (vowel.equals("ഒ") && vowelSign.equals("ാ")) {
+            strVowelSign = "ഓ";
+        } else if (vowel.equals("ഒ") && vowelSign.equals("ൗ")) {
+            strVowelSign = "ഔ";
+        } else {
+            strVowelSign = vowelLetter + vowelSignLetter;
         }
-        if (vowel.equals("ഒ")) {
-            if (vowelSign.equals("ാ")) {
-                return "ഓ";
-            }
-            if (vowelSign.equals("ൗ")) {
-                return "ഔ";
-            }
-        }
-        return (vowelLetter + vowelSignLetter);
+        return strVowelSign;
     }
 
     /**
