@@ -58,8 +58,9 @@ The above function accepts texts and converts it as per flags given.
 
 #### Get module name and information
 ```
-String moduleName = obj.getModuleName();
-String moduleInforamtion =  obj.getModuleInformation();
+
+        String moduleName = obj.getModuleName();
+        String moduleInforamtion =  obj.getModuleInformation();
 ```
 
 #### Payyans EditText using XML 
