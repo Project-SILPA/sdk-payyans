@@ -41,8 +41,8 @@ public class Payyans {
             R.raw.silpa_sdk_nandini, R.raw.silpa_sdk_panchari, R.raw.silpa_sdk_revathi,
             R.raw.silpa_sdk_template, R.raw.silpa_sdk_uma, R.raw.silpa_sdk_valluvar};
 
-    private static final int DEFAULT_FONT_MAP = Payyans.FONT_MAP_AMBILI;
-    private static final int DEFAULT_DIRECTION = Payyans.ASCII_TO_UNICODE;
+    protected static final int DEFAULT_FONT_MAP = Payyans.FONT_MAP_AMBILI;
+    protected static final int DEFAULT_DIRECTION = Payyans.ASCII_TO_UNICODE;
 
     private static final String LOG_TAG = MODULE_NAME;
 
