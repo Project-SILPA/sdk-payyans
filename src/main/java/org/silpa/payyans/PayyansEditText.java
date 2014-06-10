@@ -142,8 +142,6 @@ public class PayyansEditText extends EditText {
             @Override
             public void afterTextChanged(Editable editable) {
 
-                if (editable.toString().length() == 0) return;
-
                 if (mOutputView == null) {
                     mOutputView = getRootView().findViewById(mOutputResourceId);
                 }
@@ -158,6 +156,33 @@ public class PayyansEditText extends EditText {
                 }
             }
         });
+    }
+
+    /**
+     * Function to get font map
+     *
+     * @return int - check Payyans font map constants
+     */
+    public int getFontMap() {
+        return this.mFontMap;
+    }
+
+    /**
+     * Function to get current direction of conversion
+     *
+     * @return Payyans.ASCII_TO_UNICODE or Payyans.UNICODE_TO_ASCII
+     */
+    public int getDirection() {
+        return this.mDirection;
+    }
+
+    /**
+     * Get payyans object for conversion
+     *
+     * @return
+     */
+    public Payyans getPayyans() {
+        return this.payyans;
     }
 
     /**
@@ -191,5 +216,14 @@ public class PayyansEditText extends EditText {
      */
     public void setOutputField(int resourceId) {
         this.mOutputResourceId = resourceId;
+    }
+
+    /**
+     * Explicitly set payyans object
+     *
+     * @param payyans payyans object
+     */
+    public void setPayyans(Payyans payyans) {
+        this.payyans = payyans;
     }
 }

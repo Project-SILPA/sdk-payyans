@@ -114,8 +114,25 @@ public class Payyans {
     }
 
     /**
+     * Function to get font map
+     *
+     * @return int - check Payyans font map constants
+     */
+    public int getFontMap() {
+        return this.mFontMap;
+    }
+
+    /**
+     * Function to get current direction of conversion
+     *
+     * @return Payyans.ASCII_TO_UNICODE or Payyans.UNICODE_TO_ASCII
+     */
+    public int getDirection() {
+        return this.mDirection;
+    }
+
+    /**
      * This function is used to explicitly set font map
-     * *
      *
      * @param fontMap fontmap
      */
