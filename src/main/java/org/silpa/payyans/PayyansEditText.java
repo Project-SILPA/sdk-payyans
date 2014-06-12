@@ -13,7 +13,7 @@ import android.widget.TextView;
 /**
  * Created by sujith on 10/6/14.
  */
-public class PayyansEditText extends EditText {
+public class PayyansEditText extends EditText implements PayyansInterface {
 
     /**
      * Context of application
@@ -44,6 +44,11 @@ public class PayyansEditText extends EditText {
      * View specified from layout to output results
      */
     private View mOutputView;
+
+    /**
+     * For converted Text
+     */
+    private String mConvertedText;
 
     // Log tag
     private static final String LOG_TAG = "PayyansEditText";
@@ -146,12 +151,11 @@ public class PayyansEditText extends EditText {
                     mOutputView = getRootView().findViewById(mOutputResourceId);
                 }
                 if (mOutputView != null) {
+                    mConvertedText = payyans.getConvertText(editable.toString());
                     if (mOutputView instanceof EditText) {
-                        ((EditText) mOutputView).setText(
-                                payyans.getConvertText(editable.toString()));
+                        ((EditText) mOutputView).setText(mConvertedText);
                     } else if (mOutputView instanceof TextView) {
-                        ((TextView) mOutputView).setText(
-                                payyans.getConvertText(editable.toString()));
+                        ((TextView) mOutputView).setText(mConvertedText);
                     }
                 }
             }
@@ -183,6 +187,33 @@ public class PayyansEditText extends EditText {
      */
     public Payyans getPayyans() {
         return this.payyans;
+    }
+
+    /**
+     * Get converted Text
+     *
+     * @return converted text base of specified font map and direction
+     */
+    public String getConvertedText() {
+        return this.mConvertedText;
+    }
+
+    /**
+     * This function gives name of the module
+     *
+     * @return name of module
+     */
+    public String getModuleName() {
+        return this.payyans.getModuleName();
+    }
+
+    /**
+     * This function gives a brief description of the module
+     *
+     * @return brief information regarding the module
+     */
+    public String getModuleInformation() {
+        return this.payyans.getModuleInformation();
     }
 
     /**
