@@ -163,10 +163,21 @@ public class PayyansEditText extends EditText implements PayyansInterface {
     }
 
     /**
+     * Explicitly set output field
+     *
+     * @param resourceId resource id of output field
+     */
+    public void setOutputField(int resourceId) {
+        this.mOutputResourceId = resourceId;
+    }
+
+
+    /**
      * Function to get font map
      *
      * @return int - check Payyans font map constants
      */
+    @Override
     public int getFontMap() {
         return this.mFontMap;
     }
@@ -176,6 +187,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @return Payyans.ASCII_TO_UNICODE or Payyans.UNICODE_TO_ASCII
      */
+    @Override
     public int getDirection() {
         return this.mDirection;
     }
@@ -185,6 +197,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @return
      */
+    @Override
     public Payyans getPayyans() {
         return this.payyans;
     }
@@ -194,6 +207,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @return converted text base of specified font map and direction
      */
+    @Override
     public String getConvertedText() {
         return this.mConvertedText;
     }
@@ -203,6 +217,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @return name of module
      */
+    @Override
     public String getModuleName() {
         return this.payyans.getModuleName();
     }
@@ -212,6 +227,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @return brief information regarding the module
      */
+    @Override
     public String getModuleInformation() {
         return this.payyans.getModuleInformation();
     }
@@ -221,6 +237,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @param fontMap font map
      */
+    @Override
     public void setFontMap(int fontMap) {
         if (this.payyans != null) {
             this.mFontMap = fontMap;
@@ -233,6 +250,7 @@ public class PayyansEditText extends EditText implements PayyansInterface {
      *
      * @param direction direction
      */
+    @Override
     public void setDirection(int direction) {
         if (this.payyans != null) {
             this.mDirection = direction;
@@ -241,19 +259,11 @@ public class PayyansEditText extends EditText implements PayyansInterface {
     }
 
     /**
-     * Explicitly set output field
-     *
-     * @param resourceId resource id of output field
-     */
-    public void setOutputField(int resourceId) {
-        this.mOutputResourceId = resourceId;
-    }
-
-    /**
      * Explicitly set payyans object
      *
      * @param payyans payyans object
      */
+    @Override
     public void setPayyans(Payyans payyans) {
         this.payyans = payyans;
     }

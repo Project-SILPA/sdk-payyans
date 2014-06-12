@@ -116,6 +116,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @return int - check Payyans font map constants
      */
+    @Override
     public int getFontMap() {
         return this.mFontMap;
     }
@@ -125,6 +126,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @return Payyans.ASCII_TO_UNICODE or Payyans.UNICODE_TO_ASCII
      */
+    @Override
     public int getDirection() {
         return this.mDirection;
     }
@@ -134,6 +136,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @return
      */
+    @Override
     public Payyans getPayyans() {
         return this.payyans;
     }
@@ -143,6 +146,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @return converted text base of specified font map and direction
      */
+    @Override
     public String getConvertedText() {
         if (this.payyans != null) {
             this.mConvertedText = this.payyans.
@@ -156,6 +160,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @return name of module
      */
+    @Override
     public String getModuleName() {
         return this.payyans.getModuleName();
     }
@@ -165,6 +170,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @return brief information regarding the module
      */
+    @Override
     public String getModuleInformation() {
         return this.payyans.getModuleInformation();
     }
@@ -174,6 +180,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @param fontMap font map
      */
+    @Override
     public void setFontMap(int fontMap) {
         if (this.payyans != null) {
             this.mFontMap = fontMap;
@@ -186,6 +193,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @param direction direction
      */
+    @Override
     public void setDirection(int direction) {
         if (this.payyans != null) {
             this.mDirection = direction;
@@ -198,6 +206,7 @@ public class PayyansTextView extends TextView implements PayyansInterface {
      *
      * @param payyans payyans object
      */
+    @Override
     public void setPayyans(Payyans payyans) {
         this.payyans = payyans;
     }
