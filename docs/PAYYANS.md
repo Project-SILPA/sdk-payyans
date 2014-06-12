@@ -123,8 +123,6 @@ Possible values for attribute `payyans:fontMap` are :
 Possible values for attribute `payyans:outputField` are :  resource id of EditText or TextView
 
 
-#### Payyans EditText using XML 
-
 Payyans EditText parameters can also be defined explicitly if required.
 
 ```         
@@ -153,6 +151,38 @@ PayyansEditText can also be set to use a Payyans object for conversion. For eg :
         edtPayyans.setOutputField(R.id.tvPayyansOutput);
         
 ```
+
+Converted Text can also be obtained by using
+```
+
+        String str = edtPayyans.getConvertedText();
+    
+```
+
+
+#### Payyans Text View
+
+
+```         
+        <org.silpa.payyans.PayyansTextView
+                    android:id="@+id/tvPayyans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="hello"
+                    payyans:directionOfConversion="ASCIIToUnicode"
+                    payyans:fontMap="manorama" />
+```
+
+PayyansTextView attributes are the same as mentioned above with PayyansEditText except for `payyans:outputField`
+Converted text can be obtained as follows.
+
+```         
+        PayyansTextView tvPayyans = (PayyansTextView) view.findViewById(R.id.tvPayyans);
+        String str = tvPayyans.getConvertedText();       
+```
+
+PayyansTextView can also be set to use a Payyans object for conversion as mentioned for PayyansEditText. 
+
 
 #### To run tests
 Tests present at `/src/test/java/`
