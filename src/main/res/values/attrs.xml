@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Common attributes -->
-    <attr name="directionOfConversion" format="enum">
+    <attr name="payyansDirectionOfConversion" format="enum">
         <enum name="ASCIIToUnicode" value="0" />
         <enum name="UnicodeToASCII" value="1" />
     </attr>
-    <attr name="fontMap" format="enum">
+    <attr name="payyansFontMap" format="enum">
         <enum name="ambili" value="0" />
         <enum name="charaka" value="1" />
         <enum name="haritha" value="2" />
@@ -23,14 +23,14 @@
 
     <!-- Attributes for PayyansEditText -->
     <declare-styleable name="PayyansEditText">
-        <attr name="directionOfConversion" />
-        <attr name="fontMap" />
-        <attr name="outputField" format="reference" />
+        <attr name="payyansDirectionOfConversion" />
+        <attr name="payyansFontMap" />
+        <attr name="payyansOutputTo" format="reference" />
     </declare-styleable>
 
     <!-- Attributes for PayyansTextView -->
     <declare-styleable name="PayyansTextView">
-        <attr name="directionOfConversion" />
-        <attr name="fontMap" />
+        <attr name="payyansDirectionOfConversion" />
+        <attr name="payyansFontMap" />
     </declare-styleable>
 </resources>

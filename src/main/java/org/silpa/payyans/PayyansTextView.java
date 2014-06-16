@@ -98,9 +98,9 @@ public class PayyansTextView extends TextView implements PayyansInterface {
 
         try {
             this.mContext = getContext();
-            this.mFontMap = a.getInteger(R.styleable.PayyansTextView_fontMap,
+            this.mFontMap = a.getInteger(R.styleable.PayyansEditText_payyansFontMap,
                     Payyans.DEFAULT_FONT_MAP);
-            this.mDirection = a.getInteger(R.styleable.PayyansTextView_directionOfConversion,
+            this.mDirection = a.getInteger(R.styleable.PayyansEditText_payyansDirectionOfConversion,
                     Payyans.DEFAULT_DIRECTION);
 
             this.payyans = new Payyans(this.mContext, this.mFontMap, this.mDirection);
