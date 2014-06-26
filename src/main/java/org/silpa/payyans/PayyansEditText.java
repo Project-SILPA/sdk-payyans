@@ -10,10 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.silpa.render.IndicEditText;
+
 /**
  * Created by sujith on 10/6/14.
  */
-public class PayyansEditText extends EditText implements PayyansInterface {
+public class PayyansEditText extends IndicEditText implements PayyansInterface {
 
     /**
      * Context of application

@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.TextView;
+
+import org.silpa.render.IndicTextView;
 
 /**
  * Created by sujith on 12/6/14.
  */
-public class PayyansTextView extends TextView implements PayyansInterface {
+public class PayyansTextView extends IndicTextView implements PayyansInterface {
 
     /**
      * Context of application
