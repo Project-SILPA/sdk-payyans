@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "org.silpa.payyans"
-        minSdkVersion 4
+        minSdkVersion 9
         //noinspection OldTargetApi
         targetSdkVersion 19
         versionCode 1
@@ -43,4 +43,6 @@ dependencies {
     compile project(':sdk-render')
 }
 
-//apply from: '../gradle-mvn-push.gradle'
+// Uncomment following code while updating on maven central
+//
+// apply from: '../gradle-mvn-push.gradle'
