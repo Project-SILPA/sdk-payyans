@@ -197,7 +197,7 @@ public class PayyansEditText extends IndicEditText implements PayyansInterface {
     /**
      * Get payyans object for conversion
      *
-     * @return
+     * @return payyans object
      */
     @Override
     public Payyans getPayyans() {

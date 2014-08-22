@@ -15,35 +15,35 @@ public interface PayyansInterface {
     /**
      * To get direction of conversion
      *
-     * @return
+     * @return int
      */
     public int getDirection();
 
     /**
      * To get payyans object used for conversion
      *
-     * @return
+     * @return payyans object
      */
     public Payyans getPayyans();
 
     /**
      * To get converted text from respective view
      *
-     * @return
+     * @return string
      */
     public String getConvertedText();
 
     /**
      * To get name of module
      *
-     * @return
+     * @return string
      */
     public String getModuleName();
 
     /**
      * To get brief information fo the module
      *
-     * @return
+     * @return string
      */
     public String getModuleInformation();
 
