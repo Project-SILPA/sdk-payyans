@@ -1,16 +1,21 @@
-package org.silpa.payyans;
+package org.libindic.payyans;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import org.silpa.render.IndicTextView;
+import org.libindic.render.IndicEditText;
 
 /**
- * Created by sujith on 12/6/14.
+ * Created by sujith on 10/6/14.
  */
-public class PayyansTextView extends IndicTextView implements PayyansInterface {
+public class PayyansEditText extends IndicEditText implements PayyansInterface {
 
     /**
      * Context of application
@@ -33,21 +38,33 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
     private int mDirection;
 
     /**
+     * Specified output field from layout
+     */
+    private int mOutputResourceId;
+
+    /**
+     * View specified from layout to output results
+     */
+    private View mOutputView;
+
+    /**
      * For converted Text
      */
     private String mConvertedText;
 
     // Log tag
-    private static final String LOG_TAG = "PayyansTextView";
+    private static final String LOG_TAG = "PayyansEditText";
+
 
     /**
      * Constructor
      *
      * @param context context of application
      */
-    public PayyansTextView(Context context) {
+    public PayyansEditText(Context context) {
         super(context);
         init(null, 0);
+        initView();
     }
 
     /**
@@ -56,9 +73,10 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
      * @param context context of application
      * @param attrs   attribute set
      */
-    public PayyansTextView(Context context, AttributeSet attrs) {
+    public PayyansEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, 0);
+        initView();
     }
 
     /**
@@ -68,9 +86,10 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
      * @param attrs    attribute set
      * @param defStyle default style
      */
-    public PayyansTextView(Context context, AttributeSet attrs, int defStyle) {
+    public PayyansEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(attrs, defStyle);
+        initView();
     }
 
     /**
@@ -93,7 +112,7 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
     private void initAttrs(AttributeSet attrs, int defStyle) {
         TypedArray a = getContext().getTheme().obtainStyledAttributes(
                 attrs,
-                R.styleable.PayyansTextView,
+                R.styleable.PayyansEditText,
                 defStyle, defStyle
         );
 
@@ -103,7 +122,7 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
                     Payyans.DEFAULT_FONT_MAP);
             this.mDirection = a.getInteger(R.styleable.PayyansEditText_payyansDirectionOfConversion,
                     Payyans.DEFAULT_DIRECTION);
-
+            this.mOutputResourceId = a.getResourceId(R.styleable.PayyansEditText_payyansOutputTo, -1);
             this.payyans = new Payyans(this.mContext, this.mFontMap, this.mDirection);
         } catch (Exception e) {
             Log.e(LOG_TAG, "Error : " + e.getMessage());
@@ -111,6 +130,49 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
             a.recycle();
         }
     }
+
+    /**
+     * Initialize view
+     */
+    private void initView() {
+        this.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if (mOutputView == null) {
+                    mOutputView = getRootView().findViewById(mOutputResourceId);
+                }
+                if (mOutputView != null) {
+                    mConvertedText = payyans.getConvertText(editable.toString());
+                    if (mOutputView instanceof EditText) {
+                        ((EditText) mOutputView).setText(mConvertedText);
+                    } else if (mOutputView instanceof TextView) {
+                        ((TextView) mOutputView).setText(mConvertedText);
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * Explicitly set output field
+     *
+     * @param resourceId resource id of output field
+     */
+    public void setOutputField(int resourceId) {
+        this.mOutputResourceId = resourceId;
+    }
+
 
     /**
      * Function to get font map
@@ -149,10 +211,6 @@ public class PayyansTextView extends IndicTextView implements PayyansInterface {
      */
     @Override
     public String getConvertedText() {
-        if (this.payyans != null) {
-            this.mConvertedText = this.payyans.
-                    getConvertText(getText().toString());
-        }
         return this.mConvertedText;
     }
 

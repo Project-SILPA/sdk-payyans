@@ -1,4 +1,4 @@
-package org.silpa.payyans;
+package org.libindic.payyans;
 
 import android.content.Context;
 import android.util.Log;

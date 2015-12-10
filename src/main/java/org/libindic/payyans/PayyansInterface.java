@@ -1,4 +1,4 @@
-package org.silpa.payyans;
+package org.libindic.payyans;
 
 /**
  * Created by sujith on 12/6/14.
